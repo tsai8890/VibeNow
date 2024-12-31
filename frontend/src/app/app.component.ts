@@ -7,9 +7,9 @@ import { WebsocketService } from '../service/websocket/websocket.service';
 @Component({
     selector: 'app-root',
     template: `
-        @if (coreService.isInit() || coreService.inQueue()) {
+        @if (coreService.isInit()) {
             <app-home [isInQueue]="coreService.inQueue()"></app-home>
-        } @else if (coreService.inRoom()) {
+        } @else if (coreService.inQueue() || coreService.inRoom()) {
             <app-chatroom></app-chatroom>
         } @else {
             <p>Something went wrong...</p>
@@ -45,5 +45,4 @@ export class AppComponent {
             }
         });
     }
-
 }

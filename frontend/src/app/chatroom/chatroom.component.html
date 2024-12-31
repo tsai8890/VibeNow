@@ -4,20 +4,22 @@
             <div id="app-chatroom-room-conversation" #chatContainer>
                 <div class="app-chatroom-message-container-system">
                     <div class="app-chatroom-message">
-                        Find Someone to chat ...
+                        Looking for someone to chat ......
                     </div>
                 </div>
 
-                <div class="app-chatroom-message-container-system">
-                    <div class="app-chatroom-message">
-                        Connection Established !!
+                @if (coreService.inRoom()) {
+                    <div class="app-chatroom-message-container-system">
+                        <div class="app-chatroom-message">
+                            Connection Established !!
+                        </div>
                     </div>
-                </div>
-                <div class="app-chatroom-message-container-system">
-                    <div class="app-chatroom-message">
-                        {{coreService.todayDate()}}
+                    <div class="app-chatroom-message-container-system">
+                        <div class="app-chatroom-message">
+                            {{coreService.todayDate()}}
+                        </div>
                     </div>
-                </div>
+                }
 
                 @for (message of messages(); track message.messageID) {
                     @if (message.uidFrom === coreService.uid()) {
@@ -48,6 +50,7 @@
                 placeholder="Type a message" 
                 [(ngModel)]="inputMessage"
                 (keydown.enter)="onSendMessage()"
+                disabled={{!coreService.inRoom()}}
             />
             <button (click)="onSendMessage()"><mat-icon id="app-chatroom-send-icon">send</mat-icon></button>
         </div>
