@@ -45,22 +45,18 @@ export class ChatroomComponent {
 					} as Message);
 				}
 			}
-			else if (message.startsWith('[room]')) {
-
-
-				let [_, cmd] = message.split(' ');
-				if (cmd === 'exit') {
-					const receivedDate = new Date();
-
-					this.updateMessage({
-						text: 'The other user has exited ...',
-						messageID: this.currentMessageID(),
-						date: receivedDate,
-						HMDateStr: `${String(receivedDate.getHours()).padStart(2, '0')}:`
-								 + `${String(receivedDate.getMinutes()).padStart(2, '0')}`,
-						uidFrom: ''
-					} as Message);
-				}
+			else if (message.startsWith('[system]')) {
+				// message: '[system] {system message}
+				let systemMessage = message.slice('[system] '.length);
+				const receivedDate = new Date();
+				this.updateMessage({
+					text: systemMessage,
+					messageID: this.currentMessageID(),
+					date: receivedDate,
+					HMDateStr: `${String(receivedDate.getHours()).padStart(2, '0')}:`
+							 + `${String(receivedDate.getMinutes()).padStart(2, '0')}`,
+					uidFrom: ''
+				} as Message);
 			}
         });
 	}

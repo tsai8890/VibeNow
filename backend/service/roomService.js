@@ -21,7 +21,7 @@ class RoomService {
     removeRoom(rid) {
         const room = this.rooms.get(rid);
         for (const ws of room.wss) {
-            ws.send(`[room] exit`);
+            ws.send(`[system] The person has left.`);
         }
         this.rooms.delete(rid);
     }
@@ -42,7 +42,7 @@ class RoomService {
         for (const receiverWs of room.wss) {
             receiverWs.send(`[message] [${wsPool.getUID(senderWs)}] ${message}`);
         }
-
+        
         console.log('[Room Statistics]');
         this.rooms.forEach((room, rid) => {
             const roomMessages = room.messages.map(msg => `${msg.uidFrom}: ${msg.message}`);

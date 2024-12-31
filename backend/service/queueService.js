@@ -55,7 +55,8 @@ class QueueService {
             const rid = roomService.createRoom([validWs1, validWs2]);
             validWs1.send(`[queue] matched ${rid}`);
             validWs2.send(`[queue] matched ${rid}`);
-
+            validWs1.send(`[system] Connection Established !!`);
+            validWs2.send(`[system] Connection Established !!`);
             console.log(`A room ${rid} is established !!!`);
     
             wsPool.enterRoom(validWs1, rid);

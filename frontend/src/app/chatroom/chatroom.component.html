@@ -8,21 +8,9 @@
                     </div>
                 </div>
 
-                @if (coreService.inRoom()) {
-                    <div class="app-chatroom-message-container-system">
-                        <div class="app-chatroom-message">
-                            Connection Established !!
-                        </div>
-                    </div>
-                    <div class="app-chatroom-message-container-system">
-                        <div class="app-chatroom-message">
-                            {{coreService.todayDate()}}
-                        </div>
-                    </div>
-                }
-
                 @for (message of messages(); track message.messageID) {
                     @if (message.uidFrom === coreService.uid()) {
+                        <!-- Sent messages -->
                         <div class="app-chatroom-message-container-sent">
                             <div class="app-chatroom-message">
                                 {{message.text}}
@@ -31,8 +19,15 @@
                                 {{message.HMDateStr}}
                             </div>
                         </div>
- 
+                    } @else if (message.uidFrom.length === 0) {
+                        <!-- System messages -->
+                        <div class="app-chatroom-message-container-system">
+                            <div class="app-chatroom-message">
+                                {{message.text}}
+                            </div>
+                        </div>
                     } @else {
+                        <!-- Received messages -->
                         <div class="app-chatroom-message-container-received">
                             <div class="app-chatroom-message">
                                 {{message.text}}
