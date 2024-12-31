@@ -1,0 +1,17 @@
+<div id="app-home-container">
+    <div id="app-home-start">
+        <p id="app-home-start-title">
+            VeilChat
+        </p>
+
+        @if (isInQueue) {
+            <button id="app-home-waiting-button" (click)="onLeaveQueue()">
+                Waiting...
+            </button>
+        } @else {
+            <button id="app-home-chat-button" (click)="onJoinQueue()">
+                CHAT
+            </button>
+        }
+    </div>
+</div>

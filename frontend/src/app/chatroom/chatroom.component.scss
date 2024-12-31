@@ -1,0 +1,166 @@
+@use 'styles' as global;
+
+#app-chatroom-container {
+    background-color: #c2b694;
+    width: 100%;
+    height: 100vh;
+    position: relative;
+}
+
+#app-chatroom-subcontainer {
+    height: 630px;
+    width: 500px;
+
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    flex-direction: column;
+}
+
+#app-chatroom-room {
+    background-color: global.$background-color;
+
+    width: 100%;
+    min-width: 500px;
+    height: 530px;
+    margin-top: auto;
+
+    display: flex;
+    flex-direction: column;
+
+    border-radius: 15px;
+}
+
+#app-chatroom-room-conversation {
+    overflow-y: scroll;
+    position: relative;
+    top: 5%;
+    height: 90%;
+}
+
+.app-chatroom-message-container-sent {
+    width: fit-content;
+    position: relative;
+    
+    display: flex;
+    flex-direction: row-reverse;
+
+    margin-left: auto;
+    margin-right: 15px;
+    margin-top: 7px;
+}
+
+.app-chatroom-message-container-received {
+    width: fit-content;
+    position: relative;
+
+    display: flex;
+
+    margin-right: auto;
+    margin-left: 15px;
+    margin-top: 7px;
+}
+
+.app-chatroom-message-container-system {
+    width: fit-content;
+    position: relative;
+
+    left: 50%;
+    transform: translate(-50%, 0);
+    margin-right: 15px;
+    margin-top: 7px;
+}
+
+.app-chatroom-message {
+    font-size: 16px;
+    text-align: center;
+    
+    border-radius: 30px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.app-chatroom-message-container-sent .app-chatroom-message-time {
+    font-size: 13px;
+    color: #627e75;
+    position: relative;
+    top: 15px;
+    right: 4px;
+}
+
+.app-chatroom-message-container-received .app-chatroom-message-time {
+    font-size: 13px;
+    color: #627e75;
+    position: relative;
+    top: 15px;
+    left: 4px;
+}
+
+.app-chatroom-message-container-system .app-chatroom-message {
+    color: black;
+    font-size: 18px;
+}
+
+.app-chatroom-message-container-sent .app-chatroom-message {
+    background-color: #25b326;
+    color: white;
+}
+
+.app-chatroom-message-container-received .app-chatroom-message {
+    background-color: #b39331;
+    color: white;
+}
+
+#app-chatroom-input-box {
+    width: 100%;
+    height: 50px;
+    font-size: 20px;
+    margin-top: auto;
+    position: relative;
+}
+
+#app-chatroom-input-box input {
+    width: 101%;
+    height: 100%;
+    font-size: 20px;
+
+    margin-right: auto;
+    padding-left: 20px;
+
+    border: 0;
+    border-radius: 20px;
+}
+
+#app-chatroom-input-box input::placeholder {
+    font-size: 20px;
+    position: relative;
+}
+
+#app-chatroom-input-box button {
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    top: 10%;
+    right: 2%;
+    
+    font-size: 18px;
+    background-color: #25b326;
+    color: white;
+
+    border: 0;
+    border-radius: 50%;
+
+    cursor: pointer;
+}
+
+#app-chatroom-send-icon {
+    position: relative;
+    left: 46%;
+    top: 42%;
+    transform: translate(-50%, -50%);
+}

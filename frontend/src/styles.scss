@@ -1,0 +1,18 @@
+/* You can add global styles to this file, and also import other style files */
+$background-color: #F4F1EB;
+$primary-color: #F3CD91;
+$primary-content-color: #784E0E;
+$content-color: #31291C;
+$border-color: #E8E1D6;
+$foreground-color: #FCFBFA;
+
+$primary-font: 'Georgia';
+$button-font: 'Roboto';
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
