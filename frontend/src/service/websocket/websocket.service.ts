@@ -14,7 +14,7 @@ export class WebsocketService {
   constructor() {}
 
   connect() {
-    this.socket = new WebSocket(`ws://${PROD_ENV.SOCKET_SERVER_URL || ENV.SOCKET_SERVER_URL}`);
+    this.socket = new WebSocket(PROD_ENV.SOCKET_SERVER_URL || ENV.SOCKET_SERVER_URL);
     
     this.socket.onopen = () => {
       this.statusSubject.next('open');
