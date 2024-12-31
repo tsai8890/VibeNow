@@ -24,6 +24,47 @@ export class ChatroomComponent {
 		private webSocketService: WebsocketService
 	) {}
 
+	ngOnInit(): void {
+		this.webSocketService.getMessages().subscribe((message: string) => {
+			console.log(message);
+			if (message.startsWith('[message]')) {
+				// message: '[message] [UID] text'
+				let parts = message.split(']');
+				let uidFrom = parts[1].slice(2);
+				let text = parts[2].slice(1);
+				
+				if (uidFrom !== this.coreService.uid()) {
+					const receivedDate = new Date();
+					this.updateMessage({
+						text: text,
+						messageID: this.currentMessageID(),
+						date: receivedDate,
+						HMDateStr: `${String(receivedDate.getHours()).padStart(2, '0')}:`
+								 + `${String(receivedDate.getMinutes()).padStart(2, '0')}`,
+						uidFrom: uidFrom
+					} as Message);
+				}
+			}
+			else if (message.startsWith('[room]')) {
+
+
+				let [_, cmd] = message.split(' ');
+				if (cmd === 'exit') {
+					const receivedDate = new Date();
+
+					this.updateMessage({
+						text: 'The other user has exited ...',
+						messageID: this.currentMessageID(),
+						date: receivedDate,
+						HMDateStr: `${String(receivedDate.getHours()).padStart(2, '0')}:`
+								 + `${String(receivedDate.getMinutes()).padStart(2, '0')}`,
+						uidFrom: ''
+					} as Message);
+				}
+			}
+        });
+	}
+
 	ngAfterViewChecked() {
 		this.scrollToBottom();
 	}
@@ -64,26 +105,8 @@ export class ChatroomComponent {
 		this.inputMessage = '';
 	}
 
-	ngOnInit(): void {
-		this.webSocketService.getMessages().subscribe((message: string) => {
-			if (message.startsWith('[message]')) {
-				// message: '[message] [UID] text'
-				let parts = message.split(']');
-				let uidFrom = parts[1].slice(2);
-				let text = parts[2].slice(1);
-				
-				if (uidFrom !== this.coreService.uid()) {
-					const receivedDate = new Date();
-					this.updateMessage({
-						text: text,
-						messageID: this.currentMessageID(),
-						date: receivedDate,
-						HMDateStr: `${String(receivedDate.getHours()).padStart(2, '0')}:`
-								 + `${String(receivedDate.getMinutes()).padStart(2, '0')}`,
-						uidFrom: uidFrom
-					} as Message);
-				}
-			}
-        });
+	onExit() {
+		this.coreService.init();
+		this.webSocketService.closeAndReconnect();
 	}
 }

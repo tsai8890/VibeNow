@@ -8,9 +8,10 @@ export default function closeHandler(ws, code, reason) {
         wsPool.removeConnection(ws);
     } else {
         const roomWss = roomService.getWssByRID(rid);
+        roomService.removeRoom(rid);
+
         for (const roomWs of roomWss) {
             wsPool.removeConnection(roomWs);
         }
-        roomService.removeRoom(rid);
     }
 };
