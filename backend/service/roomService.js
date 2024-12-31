@@ -42,8 +42,13 @@ class RoomService {
         for (const receiverWs of room.wss) {
             receiverWs.send(`[message] [${wsPool.getUID(senderWs)}] ${message}`);
         }
-        
-        this.rooms.forEach(r => console.log(r.messages.map(msg => `${msg.uidFrom}: ${msg.message} || `)))
+
+        console.log('[Room Statistics]');
+        this.rooms.forEach((room, rid) => {
+            const roomMessages = room.messages.map(msg => `${msg.uidFrom}: ${msg.message}`);
+            console.log(`Room ${rid}:`);
+            console.log(roomMessages);
+        });
     }
 }
 
