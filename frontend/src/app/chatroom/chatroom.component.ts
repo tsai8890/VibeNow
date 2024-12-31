@@ -48,6 +48,7 @@ export class ChatroomComponent {
 			else if (message.startsWith('[system]')) {
 				// message: '[system] {system message}
 				let systemMessage = message.slice('[system] '.length);
+
 				const receivedDate = new Date();
 				this.updateMessage({
 					text: systemMessage,
@@ -57,6 +58,10 @@ export class ChatroomComponent {
 							 + `${String(receivedDate.getMinutes()).padStart(2, '0')}`,
 					uidFrom: ''
 				} as Message);
+
+				if (systemMessage === 'The person has left.') {
+					this.coreService.theOtherLeft();
+				}
 			}
         });
 	}
@@ -71,6 +76,10 @@ export class ChatroomComponent {
 		} catch (err) {
 			console.error('Failed to scroll:', err);
 		}
+	}
+
+	isInputDisabled(): boolean {
+		return this.coreService.inQueue() || this.coreService.isTheOtherLeft();
 	}
 
 	updateMessage(message: Message): void {

@@ -16,6 +16,7 @@ export class CoreService {
     this.STATUS_CODES.set('INIT', 'init');
     this.STATUS_CODES.set('WAITING', 'waiting');
     this.STATUS_CODES.set('IN_ROOM', 'in_room');
+    this.STATUS_CODES.set('IN_EMPTY_ROOM', 'in_empty_room');
 
     this.status.set(this.STATUS_CODES.get('INIT'));
   }
@@ -65,6 +66,14 @@ export class CoreService {
 
   inRoom() {
     return this.status === this.STATUS_CODES.get('IN_ROOM');
+  }
+
+  theOtherLeft() {
+    this.status = this.STATUS_CODES.get('IN_EMPTY_ROOM');
+  }
+
+  isTheOtherLeft() {
+    return this.status === this.STATUS_CODES.get('IN_EMPTY_ROOM');
   }
 
   init() {

@@ -47,7 +47,7 @@
                     placeholder="Type a message" 
                     [(ngModel)]="inputMessage"
                     (keydown.enter)="onSendMessage()"
-                    disabled={{!coreService.inRoom()}}
+                    disabled={{isInputDisabled()}}
                 />
                 <button id="app-chatroom-send-button"(click)="onSendMessage()"><mat-icon id="app-chatroom-send-icon">send</mat-icon></button>
             </div>
