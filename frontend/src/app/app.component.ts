@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component } from '@angular/core';
 import { HomeComponent } from './home/home.component';
 import { ChatroomComponent } from './chatroom/chatroom.component';
 import { CoreService } from '../service/core/core.service';
@@ -18,8 +18,6 @@ import { WebsocketService } from '../service/websocket/websocket.service';
     imports: [HomeComponent, ChatroomComponent]
 })
 export class AppComponent {
-    title = 'VeilChat';
-
     constructor(
         public coreService: CoreService,
         private webSocketService: WebsocketService
