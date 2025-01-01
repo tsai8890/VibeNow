@@ -23,6 +23,10 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
+![VibeNow-demo-home](https://github.com/user-attachments/assets/829c4491-46e7-4c00-b31b-d2669b820e12)
+
+https://github.com/user-attachments/assets/04c8392a-2fa9-49b4-b0dc-fe9ad17c3fc0
+
 ### Key Features
 
 * Chatting Platform: Matched users can chat with each other until they choose to exit.
