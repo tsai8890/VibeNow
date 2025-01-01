@@ -5,11 +5,26 @@
     background-color: rgb(194, 182, 148, 0.1);
     width: 100%;
     height: 100vh;
+    min-height: 680px;
+
     position: relative;
+}
+@media(max-width: global.$mobile-phone-max-width) {
+    // Mobile Phone
+    #app-chatroom-container {
+        background-color: rgb(194, 182, 148, 0.1);
+        width: 100vw;
+
+        // If the height is too large, it will generate scroll bars.
+        height: 89vh; 
+        min-height: 700px;
+        
+        position: relative;
+    }
 }
 
 #app-chatroom-subcontainer {
-    height: 630px;
+    height: 660px;
     width: 560px;
 
     position: relative;
@@ -20,14 +35,27 @@
     display: flex;
     flex-direction: column;
 }
+@media(max-width: global.$mobile-phone-max-width) {
+    #app-chatroom-subcontainer {
+        height: 700px;
+        width: 380px;
+    
+        position: relative;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, 0);
+        
+        display: flex;
+        flex-direction: column;
+    }
+}
 
 #app-chatroom-room {
     background-color: global.$foreground-color;
 
     width: 100%;
-    min-width: 500px;
-    height: 530px;
-    margin-top: auto;
+    height: 580px;
+    margin-top: 10px;
 
     display: flex;
     flex-direction: column;
@@ -35,12 +63,35 @@
     border-radius: 15px;
     border: #d6c19e solid 4px;
 }
+@media(max-width: global.$mobile-phone-max-width) {
+    #app-chatroom-room {
+        background-color: global.$foreground-color;
+    
+        width: 100%;
+        height: 630px;
+        margin-top: 10px;
+    
+        display: flex;
+        flex-direction: column;
+    
+        border-radius: 15px;
+        border: #d6c19e solid 4px;
+    }
+}
 
 #app-chatroom-room-conversation {
     overflow-y: scroll;
     position: relative;
     top: 5%;
     height: 90%;
+}
+@media(max-width: global.$mobile-phone-max-width) {
+    #app-chatroom-room-conversation {
+        overflow-y: scroll;
+        position: relative;
+        top: 1%;
+        height: 90%;
+    }
 }
 
 .app-chatroom-message-container-sent {
@@ -66,8 +117,9 @@
 }
 
 .app-chatroom-message-container-system {
-    width: 300px;
-    background-color: rgb(213, 193, 158, 0.6);
+    width: 330px;
+    background-color: rgb(213, 193, 158, 0.9);
+    // background-color: rgba(52, 116, 219, 0.4);
 
     position: relative;
     left: 50%;
@@ -85,7 +137,7 @@
 }
 
 .app-chatroom-message {
-    font-size: 18px;
+    font-size: 19px;
     text-align: center;
     
     border-radius: 30px;
@@ -93,6 +145,18 @@
     padding-right: 15px;
     padding-top: 5px;
     padding-bottom: 5px;
+}
+@media(max-width: global.$mobile-phone-max-width) {
+    .app-chatroom-message {
+        font-size: 18px;
+        text-align: center;
+        
+        border-radius: 30px;
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
 }
 
 .app-chatroom-message-container-sent .app-chatroom-message-time {
@@ -113,7 +177,6 @@
 
 .app-chatroom-message-container-system .app-chatroom-message {
     color: black;
-    font-size: 17px;
 }
 
 .app-chatroom-message-container-sent .app-chatroom-message {
@@ -130,12 +193,26 @@
     width: 100%;
     height: 50px;
     margin-top: auto;
+    margin-top: 15px;
 
     position: relative;
     left: 50%;
     transform: translate(-50%);
 
     display: flex;
+}
+@media(max-width: global.$mobile-phone-max-width) {
+    #app-chatroom-bottom-container {
+        width: 100%;
+        height: 50px;
+        margin-top: 5px;
+    
+        position: relative;
+        left: 50%;
+        transform: translate(-50%);
+    
+        display: flex;
+    }
 }
 
 #app-chatroom-input-box {
@@ -146,11 +223,25 @@
     position: relative;
     left: 4%;
 }
+@media(max-width: global.$mobile-phone-max-width) {
+    #app-chatroom-input-box {
+        width: 87%;
+        height: 100%;
+        font-size: 20px;
+    
+        position: relative;
+        left: 1%;
+    }
+}
 
 #app-chatroom-input-box input {
     width: 100%;
     height: 100%;
     font-size: 20px;
+
+    position: relative;
+    top: 50%;
+    transform: translate(0, -50%);
 
     margin-left: auto;
     padding-left: 20px;
@@ -158,10 +249,31 @@
     border: #d6c19e solid 4px;
     border-radius: 20px;
 }
+@media(max-width: global.$mobile-phone-max-width) {
+    #app-chatroom-input-box input {
+        width: 100%;
+        height: 100%;
+        font-size: 18px;
+        
+        position: relative;
+        top: 50%;
+        transform: translate(0, -50%);
+        
+        margin-left: auto;
+        padding-left: 20px;
+    
+        border: #d6c19e solid 4px;
+        border-radius: 20px;
+    }
+}
 
 #app-chatroom-input-box input::placeholder {
     font-size: 20px;
-    position: relative;
+}
+@media(max-width: global.$mobile-phone-max-width) {
+    #app-chatroom-input-box input::placeholder {
+        font-size: 18px;
+    }
 }
 
 #app-chatroom-send-button {
@@ -181,6 +293,21 @@
     cursor: pointer;
 }
 
+#app-chatroom-send-icon {
+    position: relative;
+    left: 46%;
+    top: 42%;
+    transform: translate(-50%, -50%);
+}
+@media(max-width: global.$mobile-phone-max-width) {
+    #app-chatroom-send-icon {
+        position: relative;
+        left: 5px;
+        top: 15px;
+        transform: translate(-50%, -50%);
+    }
+}
+
 #app-chatroom-exit-button {
     width: 13%;
     height: 90%;
@@ -198,11 +325,4 @@
     cursor: pointer;
 
     padding: 0;
-}
-
-#app-chatroom-send-icon {
-    position: relative;
-    left: 46%;
-    top: 42%;
-    transform: translate(-50%, -50%);
 }

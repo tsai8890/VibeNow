@@ -86,10 +86,10 @@
 ## Roadmap
 - [x] Allow users to join the queue and wait for another person to chat
 - [x] When users type a message, auto scroll the screen to the bottom
-- [ ] User registration / login to avoid malicious usage
-- [ ] Use snackbar to show the system message
-- [ ] After clicking the Chat button, navigate to the chatroom page and wait.
-- [ ] Notify users in the same room when another user exits.
+- [x] After clicking the Chat button, navigate to the chatroom page and wait.
+- [x] Notify users in the same room when another user exits.
+- [x] Responsive Web Design for mobile devices
+- [ ] When there're only few messages, place them from the botton to the top.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
