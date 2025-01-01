@@ -1,10 +1,15 @@
-import {MatIconModule} from '@angular/material/icon'
-import { Component, ElementRef, signal, ViewChild } from '@angular/core';
+import { MatIconModule } from '@angular/material/icon'
+import { Component, ElementRef, signal, ViewChild, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { Message } from '../../models/Message';
 import { WebsocketService } from '../../service/websocket/websocket.service';
 import { CoreService } from '../../service/core/core.service';
+import { ExitDialogComponent } from '../exit-dialog/exit-dialog.component';
+
+import {
+	MatDialog,
+} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-chatroom',
@@ -21,7 +26,8 @@ export class ChatroomComponent {
 
 	constructor(
 		public coreService: CoreService,
-		private webSocketService: WebsocketService
+		private webSocketService: WebsocketService,
+		public exitDialog: MatDialog
 	) {}
 
 	ngOnInit(): void {
@@ -69,6 +75,20 @@ export class ChatroomComponent {
 	ngAfterViewChecked() {
 		this.scrollToBottom();
 	}
+
+	openExitDialog(): void {
+		const dialogRef = this.exitDialog.open(
+		  	ExitDialogComponent, {
+			  	autoFocus: false
+		  	}
+	  	);
+  
+	  	dialogRef.afterClosed().subscribe(result => {
+		  	if (result !== undefined) {
+			  	this.onExit();
+		  	}
+	  	});
+  	}
 
 	scrollToBottom(): void {
 		try {
