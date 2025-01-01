@@ -47,7 +47,7 @@
 
 1. Clone the repo
     ```bash
-    git clone git@github.com:tsai8890/anonymous-chatting-system.git
+    git clone git@github.com:tsai8890/VibeNow.git
     ```
 2. Install packages
     ```bash
