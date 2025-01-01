@@ -2,7 +2,7 @@
 
 <h1 align="center">
   <br>
-  Anonymous Chatting System
+  VibeNow
   <br>
 </h1>
 
