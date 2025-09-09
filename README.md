@@ -125,7 +125,7 @@ Besides, if you find this project useful, don't forget to give it a star !
 
 Aaron Tsai - aarontsaai@gmail.com
 
-Project Link: [https://github.com/tsai8890/LeetTimer](https://github.com/tsai8890/LeetTimer)
+Project Link: [https://github.com/tsai8890/LeetTimer](https://github.com/tsai8890/VibeNow)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
